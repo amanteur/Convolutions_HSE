@@ -123,7 +123,6 @@ def test_scipy_gauss(func, sigma, kernel=None):
 def check_time_memory(func, approx_func, sigmas, n=1000):
     """
     Computes statistics (eval time and memory usage) for approximations with different sigmas
-
     :param func: (1d np.array)
         initial function with noise
     :param approx_func: (function)
@@ -199,6 +198,11 @@ if __name__ == '__main__':
     # function with some noise
     func_noise = func + np.random.normal(0, 0.4, size=x.shape)
 
+    # another function for testing
+    func_2 = np.zeros(500)
+    func_2[250:310] = 1
+    # func_noise = func_2
+
     # plot function and its noised version
     plt.figure(figsize=(5, 5))
     plt.plot(func, 'k')
@@ -207,9 +211,9 @@ if __name__ == '__main__':
     plt.show()
 
     # initializing different sigmas
-    sigmas = [10, 12, 16, 20, 24, 30, 40, 50, 70, 100, 150, 200]
+    sigmas = [10, 12, 16, 20, 24, 30, 36, 40, 50, 60, 70, 80]
     # different number of repeats for time eval
-    rep = [10000, 1000, 1000, 100]
+    rep = [1000, 1000, 1000, 100]
     approx_dict = {'Fourier': Fourier.fourier1d_approx,
                    'Deriche': Deriche.deriche1d_approx,
                    'Polynomial': Poly.poly1d_approx,

@@ -71,7 +71,8 @@ def deriche1d_approx(func, sigma, gauss_kernel=None):
 
     # defining constants
     scale_alpha = 5 / (2 * np.sqrt(np.pi))
-    alpha = scale_alpha / sigma
+    # alpha = scale_alpha / sigma
+    alpha = 1.812 / sigma # best value
     e = exp(-alpha)
     e2 = exp(-2 * alpha)
 
